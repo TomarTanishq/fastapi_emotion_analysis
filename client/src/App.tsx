@@ -46,13 +46,15 @@ function App() {
 
       {/* Headings */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-semibold text-gray-800 mb-2">Emotion Analysis</h1>
+        <h1 className="text-4xl font-bold text-gray-800 mb-2">Emotion Analysis</h1>
         <p className="text-gray-600 text-lg">Analyze emotions in text using AI technology</p>
       </div>
 
       {/* Emotion Input and Analysis*/}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
         <div className="lg:col-span-2">
+          {/*Emotion Input */}
           <div className="bg-white rounded-4xl shadow-md p-6 mb-8">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-blue-600 text-primary-500">edit</span>
@@ -90,7 +92,7 @@ function App() {
               <span className="material-symbols-outlined text-blue-600 text-primary-500">diagnosis</span>
               Analysis Result
             </h2>
-            {result && (
+            {result ? (
               <div className="mt-2">
                 <div className="text-[3rem]">
                   {emojiMap[result.label.toLowerCase()] || "❓"}
@@ -98,13 +100,15 @@ function App() {
                 <p>Emotion: <strong>{result.label.toUpperCase()}</strong></p>
                 <p>Confidence: {result.score.toFixed(2)}</p>
               </div>
+            ) : (
+              <p className="text-gray-400">Please analyze your emotions first...</p>
             )}
           </div>
         </div>
 
         {/* Analysis History */}
         <div className="lg:col-span-1">
-          <div className=" bg-white rounded-4xl shadow-md p-6 h-[24rem] overflow-auto">
+          <div className=" bg-white rounded-4xl shadow-md p-6 h-[24rem] overflow-auto mb-5">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-blue-600 text-primary-500">history</span>
               Analysis History
@@ -125,7 +129,8 @@ function App() {
                 <p className="text-gray-400">Please analyze your emotions first...</p>
               </div>
             )}
-          </div></div>
+          </div>
+        </div>
       </div>
     </div >
   );
